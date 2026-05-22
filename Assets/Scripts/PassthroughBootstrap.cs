@@ -19,7 +19,6 @@ namespace CSE165.Project3
         {
             if (!OVRManager.IsInsightPassthroughSupported())
             {
-                Debug.LogError("Passthrough is not supported by this runtime/device.");
                 return;
             }
 

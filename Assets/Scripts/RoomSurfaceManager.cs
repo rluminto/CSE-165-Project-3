@@ -72,10 +72,6 @@ namespace CSE165.Project3
                 yield return null;
             }
 
-            if (!builtRoom)
-            {
-                Debug.LogWarning("MRUK did not load a room. Check Quest Space Setup and scene permissions.");
-            }
         }
 
         private void OnSceneLoaded()

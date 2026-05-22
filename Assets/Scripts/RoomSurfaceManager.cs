@@ -38,6 +38,8 @@ namespace CSE165.Project3
 
         private void OnEnable()
         {
+            builtRoom = false;
+            ClearSurfaceCopies();
             StartCoroutine(WaitForMRUKRoom());
         }
 
@@ -58,9 +60,9 @@ namespace CSE165.Project3
                 yield return null;
             }
 
-            MRUK.Instance.SceneLoadedEvent.AddListener(OnSceneLoaded);
+            MRUK.Instance.RegisterSceneLoadedCallback(OnSceneLoaded);
 
-            for (int frame = 0; frame < 600 && !builtRoom; frame++)
+            while (!builtRoom)
             {
                 var room = GetCurrentRoom();
                 if (room != null)
@@ -71,7 +73,6 @@ namespace CSE165.Project3
 
                 yield return null;
             }
-
         }
 
         private void OnSceneLoaded()
